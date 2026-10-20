@@ -108,6 +108,50 @@ export const EditUser = () => {
       }
     }
 
+    // Additional Details Validation
+    if (values.phone && values.phone.trim()) {
+      const phoneDigits = values.phone.replace(/\D/g, '');
+      const phoneRegex = /^[\d\s+\-().]{7,25}$/;
+      if (!phoneRegex.test(values.phone.trim()) || phoneDigits.length < 7) {
+        errs.phone = 'Please provide a valid phone number (at least 7 digits).';
+      }
+    }
+
+    if (values.company && values.company.trim()) {
+      if (values.company.trim().length < 2) {
+        errs.company = 'Company name must be at least 2 characters.';
+      } else if (values.company.trim().length > 50) {
+        errs.company = 'Company name cannot exceed 50 characters.';
+      }
+    }
+
+    if (values.title && values.title.trim()) {
+      if (values.title.trim().length < 2) {
+        errs.title = 'Job title must be at least 2 characters.';
+      } else if (values.title.trim().length > 50) {
+        errs.title = 'Job title cannot exceed 50 characters.';
+      }
+    }
+
+    if (values.address && values.address.trim()) {
+      if (values.address.trim().length < 3) {
+        errs.address = 'Street address must be at least 3 characters.';
+      } else if (values.address.trim().length > 100) {
+        errs.address = 'Street address cannot exceed 100 characters.';
+      }
+    }
+
+    if (values.city && values.city.trim()) {
+      const cityRegex = /^[a-zA-Z\s\-'.]+$/;
+      if (values.city.trim().length < 2) {
+        errs.city = 'City must be at least 2 characters.';
+      } else if (values.city.trim().length > 50) {
+        errs.city = 'City cannot exceed 50 characters.';
+      } else if (!cityRegex.test(values.city.trim())) {
+        errs.city = 'City should only contain letters and spaces.';
+      }
+    }
+
     return errs;
   };
 
@@ -136,6 +180,11 @@ export const EditUser = () => {
       lastName: true,
       age: true,
       email: true,
+      phone: true,
+      company: true,
+      title: true,
+      address: true,
+      city: true,
     });
 
     const validationErrors = validate(formData);
@@ -367,8 +416,22 @@ export const EditUser = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  onBlur={() => handleBlur('phone')}
+                  placeholder="+1 555-0199"
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
+                    touched.phone && errors.phone
+                      ? 'border-rose-300 bg-rose-50/30 text-rose-900 focus:ring-rose-400'
+                      : 'border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-indigo-500 focus:border-indigo-500'
+                  }`}
+                  aria-invalid={Boolean(touched.phone && errors.phone)}
+                  aria-describedby={errors.phone ? 'edit-phone-error' : undefined}
                 />
+                {touched.phone && errors.phone && (
+                  <p id="edit-phone-error" className="mt-1 text-xs text-rose-600 flex items-center gap-1">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>{errors.phone}</span>
+                  </p>
+                )}
               </div>
 
               {/* Company */}
@@ -382,8 +445,22 @@ export const EditUser = () => {
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  onBlur={() => handleBlur('company')}
+                  placeholder="e.g. Acme Tech Solutions"
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
+                    touched.company && errors.company
+                      ? 'border-rose-300 bg-rose-50/30 text-rose-900 focus:ring-rose-400'
+                      : 'border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-indigo-500 focus:border-indigo-500'
+                  }`}
+                  aria-invalid={Boolean(touched.company && errors.company)}
+                  aria-describedby={errors.company ? 'edit-company-error' : undefined}
                 />
+                {touched.company && errors.company && (
+                  <p id="edit-company-error" className="mt-1 text-xs text-rose-600 flex items-center gap-1">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>{errors.company}</span>
+                  </p>
+                )}
               </div>
 
               {/* Job Title */}
@@ -397,8 +474,22 @@ export const EditUser = () => {
                   name="title"
                   value={formData.title}
                   onChange={handleChange}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  onBlur={() => handleBlur('title')}
+                  placeholder="e.g. Senior Frontend Engineer"
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
+                    touched.title && errors.title
+                      ? 'border-rose-300 bg-rose-50/30 text-rose-900 focus:ring-rose-400'
+                      : 'border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-indigo-500 focus:border-indigo-500'
+                  }`}
+                  aria-invalid={Boolean(touched.title && errors.title)}
+                  aria-describedby={errors.title ? 'edit-title-error' : undefined}
                 />
+                {touched.title && errors.title && (
+                  <p id="edit-title-error" className="mt-1 text-xs text-rose-600 flex items-center gap-1">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>{errors.title}</span>
+                  </p>
+                )}
               </div>
 
               {/* Address */}
@@ -412,8 +503,22 @@ export const EditUser = () => {
                   name="address"
                   value={formData.address}
                   onChange={handleChange}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  onBlur={() => handleBlur('address')}
+                  placeholder="e.g. 742 Evergreen Terrace"
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
+                    touched.address && errors.address
+                      ? 'border-rose-300 bg-rose-50/30 text-rose-900 focus:ring-rose-400'
+                      : 'border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-indigo-500 focus:border-indigo-500'
+                  }`}
+                  aria-invalid={Boolean(touched.address && errors.address)}
+                  aria-describedby={errors.address ? 'edit-address-error' : undefined}
                 />
+                {touched.address && errors.address && (
+                  <p id="edit-address-error" className="mt-1 text-xs text-rose-600 flex items-center gap-1">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>{errors.address}</span>
+                  </p>
+                )}
               </div>
 
               {/* City */}
@@ -427,8 +532,22 @@ export const EditUser = () => {
                   name="city"
                   value={formData.city}
                   onChange={handleChange}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  onBlur={() => handleBlur('city')}
+                  placeholder="e.g. Springfield"
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
+                    touched.city && errors.city
+                      ? 'border-rose-300 bg-rose-50/30 text-rose-900 focus:ring-rose-400'
+                      : 'border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-indigo-500 focus:border-indigo-500'
+                  }`}
+                  aria-invalid={Boolean(touched.city && errors.city)}
+                  aria-describedby={errors.city ? 'edit-city-error' : undefined}
                 />
+                {touched.city && errors.city && (
+                  <p id="edit-city-error" className="mt-1 text-xs text-rose-600 flex items-center gap-1">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>{errors.city}</span>
+                  </p>
+                )}
               </div>
             </div>
           </div>
