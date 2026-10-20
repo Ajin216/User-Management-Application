@@ -6,10 +6,10 @@ export const DeleteConfirmModal = ({ isOpen, user, onClose, onConfirm, isDeletin
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-fade-in">
-      <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 transform transition-all">
+      <div className="bg-white rounded-2xl max-w-md w-full p-4 sm:p-6 shadow-2xl border border-slate-100 transform transition-all">
         <div className="flex items-center justify-between pb-3 border-b border-slate-100">
           <div className="flex items-center gap-2 text-rose-600">
-            <div className="p-2 bg-rose-50 rounded-xl">
+            <div className="p-2 bg-rose-50 rounded-xl shrink-0">
               <AlertTriangle className="w-5 h-5" />
             </div>
             <h3 className="text-lg font-bold text-slate-900">Delete User</h3>
@@ -31,12 +31,12 @@ export const DeleteConfirmModal = ({ isOpen, user, onClose, onConfirm, isDeletin
           </p>
         </div>
 
-        <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
+        <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center sm:justify-end gap-2 sm:gap-3 pt-3 border-t border-slate-100">
           <button
             type="button"
             onClick={onClose}
             disabled={isDeleting}
-            className="px-4 py-2 text-sm font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors"
+            className="w-full sm:w-auto text-center px-4 py-2 text-sm font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors"
           >
             Cancel
           </button>
@@ -44,7 +44,7 @@ export const DeleteConfirmModal = ({ isOpen, user, onClose, onConfirm, isDeletin
             type="button"
             onClick={() => onConfirm(user.id)}
             disabled={isDeleting}
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-rose-600 hover:bg-rose-700 active:bg-rose-800 rounded-xl shadow-md shadow-rose-600/20 transition-all disabled:opacity-50"
+            className="w-full sm:w-auto justify-center inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-rose-600 hover:bg-rose-700 active:bg-rose-800 rounded-xl shadow-md shadow-rose-600/20 transition-all disabled:opacity-50"
           >
             <Trash2 className="w-4 h-4" />
             <span>{isDeleting ? 'Deleting...' : 'Confirm Delete'}</span>

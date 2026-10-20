@@ -205,9 +205,9 @@ export const Dashboard = () => {
 
       {/* Control Panel: Search, Filter, Sort, View Controls */}
       <section className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-xs space-y-4">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 w-full">
           {/* Search Bar */}
-          <div className="relative flex-1 max-w-md">
+          <div className="relative w-full md:flex-1 md:max-w-md">
             <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
               <Search className="w-4 h-4" />
             </div>
@@ -237,9 +237,9 @@ export const Dashboard = () => {
           </div>
 
           {/* Filter, Sort & View Modes */}
-          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+          <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 w-full md:w-auto">
             {/* Gender Filter */}
-            <div className="flex items-center gap-1.5">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 w-full md:w-auto">
               <label htmlFor="gender-filter" className="text-xs font-semibold text-slate-500 hidden sm:inline">
                 Gender:
               </label>
@@ -250,7 +250,7 @@ export const Dashboard = () => {
                   setSelectedGender(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="px-3 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer transition-colors"
+                className="w-full sm:w-auto px-3 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer transition-colors"
               >
                 <option value="all">All Genders</option>
                 <option value="male">Male</option>
@@ -259,7 +259,7 @@ export const Dashboard = () => {
             </div>
 
             {/* Sort Dropdown */}
-            <div className="flex items-center gap-1.5">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 w-full md:w-auto">
               <label htmlFor="sort-select" className="text-xs font-semibold text-slate-500 hidden sm:inline">
                 Sort:
               </label>
@@ -275,7 +275,7 @@ export const Dashboard = () => {
                   }
                   setCurrentPage(1);
                 }}
-                className="px-3 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer transition-colors"
+                className="w-full sm:w-auto px-3 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer transition-colors"
               >
                 <option value="">Default Order</option>
                 <option value="name-asc">Name (A &rarr; Z)</option>
@@ -288,7 +288,7 @@ export const Dashboard = () => {
             </div>
 
             {/* View Mode Toggle */}
-            <div className="inline-flex rounded-xl border border-slate-200 p-0.5 bg-slate-50">
+            <div className="inline-flex self-end sm:self-auto rounded-xl border border-slate-200 p-0.5 bg-slate-50 shrink-0">
               <button
                 type="button"
                 onClick={() => setViewMode('table')}
@@ -394,8 +394,8 @@ export const Dashboard = () => {
 
       {/* Pagination Controls */}
       {!loading && totalItems > 0 && (
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white px-5 py-3.5 rounded-2xl border border-slate-200/80 shadow-xs text-sm text-slate-600">
-          <div className="text-xs sm:text-sm">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white px-4 sm:px-5 py-3.5 rounded-2xl border border-slate-200/80 shadow-xs text-sm text-slate-600">
+          <div className="text-xs sm:text-sm text-center sm:text-left">
             Showing{' '}
             <strong className="text-slate-900">
               {(currentPage - 1) * itemsPerPage + 1}
@@ -407,7 +407,7 @@ export const Dashboard = () => {
             of <strong className="text-slate-900">{totalItems}</strong> users
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2">
             <select
               value={itemsPerPage}
               onChange={(e) => {

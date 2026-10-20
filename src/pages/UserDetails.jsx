@@ -150,9 +150,9 @@ export const UserDetails = () => {
       </div>
 
       {/* Main Profile Header Card */}
-      <section className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs relative overflow-hidden">
+      <section className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-slate-200/80 shadow-xs relative overflow-hidden">
         {/* Background ambient accent */}
-        <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-indigo-100/50 via-purple-50/20 to-transparent rounded-full -mr-20 -mt-20 pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-48 h-48 sm:w-80 sm:h-80 bg-gradient-to-bl from-indigo-100/50 via-purple-50/20 to-transparent rounded-full sm:-mr-20 sm:-mt-20 pointer-events-none"></div>
 
         <div className="relative flex flex-col md:flex-row items-start md:items-center gap-6">
           {/* Avatar with fallback */}
@@ -213,9 +213,9 @@ export const UserDetails = () => {
       </section>
 
       {/* Grid of Profile Detail Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         {/* 1. Personal & Physical Information */}
-        <section className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs space-y-4">
+        <section className="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200/80 shadow-xs space-y-4">
           <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100 text-indigo-600">
             <div className="p-2 bg-indigo-50 rounded-xl">
               <User className="w-5 h-5" />
@@ -223,7 +223,7 @@ export const UserDetails = () => {
             <h2 className="font-bold text-base text-slate-900">Personal &amp; Physical Metrics</h2>
           </div>
 
-          <dl className="grid grid-cols-2 gap-4 text-sm">
+          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-sm">
             <div>
               <dt className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Birth Date</dt>
               <dd className="font-semibold text-slate-800 mt-1 flex items-center gap-1.5">
@@ -271,7 +271,7 @@ export const UserDetails = () => {
         </section>
 
         {/* 2. Contact & Network Information */}
-        <section className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs space-y-4">
+        <section className="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200/80 shadow-xs space-y-4">
           <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100 text-sky-600">
             <div className="p-2 bg-sky-50 rounded-xl">
               <Globe className="w-5 h-5" />
@@ -302,7 +302,7 @@ export const UserDetails = () => {
               </a>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 pt-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-1">
               <div>
                 <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">IP Address</span>
                 <span className="font-mono text-xs text-slate-700 bg-slate-100 px-2 py-1 rounded mt-1 inline-block">
@@ -321,7 +321,7 @@ export const UserDetails = () => {
         </section>
 
         {/* 3. Address & Location */}
-        <section className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs space-y-4">
+        <section className="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200/80 shadow-xs space-y-4">
           <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100 text-emerald-600">
             <div className="p-2 bg-emerald-50 rounded-xl">
               <MapPin className="w-5 h-5" />
@@ -335,7 +335,7 @@ export const UserDetails = () => {
               <p className="font-semibold text-slate-800 mt-1">{addressObj.address || '—'}</p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">City</span>
                 <p className="font-medium text-slate-700 mt-1">{addressObj.city || '—'}</p>
@@ -363,7 +363,7 @@ export const UserDetails = () => {
         </section>
 
         {/* 4. Company & Professional Data */}
-        <section className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs space-y-4">
+        <section className="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200/80 shadow-xs space-y-4">
           <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100 text-purple-600">
             <div className="p-2 bg-purple-50 rounded-xl">
               <Briefcase className="w-5 h-5" />
@@ -379,7 +379,7 @@ export const UserDetails = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Title / Position</span>
                 <p className="font-medium text-slate-700 mt-1">{user.company?.title || user.role || '—'}</p>

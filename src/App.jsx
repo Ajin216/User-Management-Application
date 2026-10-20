@@ -13,7 +13,7 @@ import { NotFound } from './pages/NotFound';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans">
+      <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans w-full max-w-full overflow-x-hidden">
         <Toaster
           position="top-right"
           toastOptions={{
@@ -45,7 +45,7 @@ function App() {
 
         <Navbar />
 
-        <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
+        <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 pt-5 sm:pt-8 pb-12 overflow-x-hidden">
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/user/:id" element={<UserDetails />} />

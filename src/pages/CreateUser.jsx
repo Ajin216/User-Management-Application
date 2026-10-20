@@ -130,18 +130,16 @@ export const CreateUser = () => {
       </div>
 
       {/* Main Form Card */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs">
+      <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-slate-200/80 shadow-xs">
         <div className="flex items-center gap-3 pb-6 border-b border-slate-100">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 shadow-inner">
+          <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 shadow-inner shrink-0">
             <UserPlus className="w-6 h-6" />
           </div>
           <div>
             <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
               Create New User
             </h1>
-            <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-              Submits a POST request to <code className="text-indigo-600 bg-indigo-50 px-1 py-0.5 rounded text-xs">/users/add</code> and persists in local state.
-            </p>
+
           </div>
         </div>
 
@@ -153,10 +151,10 @@ export const CreateUser = () => {
               <span className="text-rose-500">*</span>
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* First Name */}
-              <div>
-                <label htmlFor="firstName" className="block text-xs font-semibold text-slate-700 mb-1.5">
+              <div className="w-full">
+                <label htmlFor="firstName" className="block w-full text-xs font-semibold text-slate-700 mb-1.5">
                   First Name <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -167,11 +165,10 @@ export const CreateUser = () => {
                   onChange={handleChange}
                   onBlur={() => handleBlur('firstName')}
                   placeholder="e.g. Alexander"
-                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
-                    touched.firstName && errors.firstName
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${touched.firstName && errors.firstName
                       ? 'border-rose-300 bg-rose-50/30 text-rose-900 focus:ring-rose-400'
                       : 'border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-indigo-500 focus:border-indigo-500'
-                  }`}
+                    }`}
                   aria-invalid={Boolean(touched.firstName && errors.firstName)}
                   aria-describedby={errors.firstName ? 'firstName-error' : undefined}
                 />
@@ -184,8 +181,8 @@ export const CreateUser = () => {
               </div>
 
               {/* Last Name */}
-              <div>
-                <label htmlFor="lastName" className="block text-xs font-semibold text-slate-700 mb-1.5">
+              <div className="w-full">
+                <label htmlFor="lastName" className="block w-full text-xs font-semibold text-slate-700 mb-1.5">
                   Last Name <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -196,11 +193,10 @@ export const CreateUser = () => {
                   onChange={handleChange}
                   onBlur={() => handleBlur('lastName')}
                   placeholder="e.g. Wright"
-                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
-                    touched.lastName && errors.lastName
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${touched.lastName && errors.lastName
                       ? 'border-rose-300 bg-rose-50/30 text-rose-900 focus:ring-rose-400'
                       : 'border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-indigo-500 focus:border-indigo-500'
-                  }`}
+                    }`}
                   aria-invalid={Boolean(touched.lastName && errors.lastName)}
                   aria-describedby={errors.lastName ? 'lastName-error' : undefined}
                 />
@@ -213,8 +209,8 @@ export const CreateUser = () => {
               </div>
 
               {/* Age */}
-              <div>
-                <label htmlFor="age" className="block text-xs font-semibold text-slate-700 mb-1.5">
+              <div className="w-full">
+                <label htmlFor="age" className="block w-full text-xs font-semibold text-slate-700 mb-1.5">
                   Age <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -227,11 +223,10 @@ export const CreateUser = () => {
                   onChange={handleChange}
                   onBlur={() => handleBlur('age')}
                   placeholder="e.g. 28"
-                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
-                    touched.age && errors.age
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${touched.age && errors.age
                       ? 'border-rose-300 bg-rose-50/30 text-rose-900 focus:ring-rose-400'
                       : 'border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-indigo-500 focus:border-indigo-500'
-                  }`}
+                    }`}
                   aria-invalid={Boolean(touched.age && errors.age)}
                   aria-describedby={errors.age ? 'age-error' : undefined}
                 />
@@ -244,8 +239,8 @@ export const CreateUser = () => {
               </div>
 
               {/* Email */}
-              <div>
-                <label htmlFor="email" className="block text-xs font-semibold text-slate-700 mb-1.5">
+              <div className="w-full">
+                <label htmlFor="email" className="block w-full text-xs font-semibold text-slate-700 mb-1.5">
                   Email Address <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -256,11 +251,10 @@ export const CreateUser = () => {
                   onChange={handleChange}
                   onBlur={() => handleBlur('email')}
                   placeholder="e.g. alex.wright@example.com"
-                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
-                    touched.email && errors.email
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${touched.email && errors.email
                       ? 'border-rose-300 bg-rose-50/30 text-rose-900 focus:ring-rose-400'
                       : 'border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-indigo-500 focus:border-indigo-500'
-                  }`}
+                    }`}
                   aria-invalid={Boolean(touched.email && errors.email)}
                   aria-describedby={errors.email ? 'email-error' : undefined}
                 />
@@ -280,10 +274,10 @@ export const CreateUser = () => {
               Additional Details (Optional)
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Gender */}
-              <div>
-                <label htmlFor="gender" className="block text-xs font-semibold text-slate-700 mb-1.5">
+              <div className="w-full">
+                <label htmlFor="gender" className="block w-full text-xs font-semibold text-slate-700 mb-1.5">
                   Gender
                 </label>
                 <select
@@ -300,8 +294,8 @@ export const CreateUser = () => {
               </div>
 
               {/* Phone */}
-              <div>
-                <label htmlFor="phone" className="block text-xs font-semibold text-slate-700 mb-1.5">
+              <div className="w-full">
+                <label htmlFor="phone" className="block w-full text-xs font-semibold text-slate-700 mb-1.5">
                   Phone Number
                 </label>
                 <input
@@ -312,13 +306,12 @@ export const CreateUser = () => {
                   onChange={handleChange}
                   placeholder="+1 555-0199"
                   className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                </input>
+                />
               </div>
 
               {/* Company */}
-              <div>
-                <label htmlFor="company" className="block text-xs font-semibold text-slate-700 mb-1.5">
+              <div className="w-full">
+                <label htmlFor="company" className="block w-full text-xs font-semibold text-slate-700 mb-1.5">
                   Company Name
                 </label>
                 <input
@@ -333,8 +326,8 @@ export const CreateUser = () => {
               </div>
 
               {/* Job Title */}
-              <div>
-                <label htmlFor="title" className="block text-xs font-semibold text-slate-700 mb-1.5">
+              <div className="w-full">
+                <label htmlFor="title" className="block w-full text-xs font-semibold text-slate-700 mb-1.5">
                   Job Title / Role
                 </label>
                 <input
@@ -349,8 +342,8 @@ export const CreateUser = () => {
               </div>
 
               {/* Address */}
-              <div>
-                <label htmlFor="address" className="block text-xs font-semibold text-slate-700 mb-1.5">
+              <div className="w-full">
+                <label htmlFor="address" className="block w-full text-xs font-semibold text-slate-700 mb-1.5">
                   Street Address
                 </label>
                 <input
@@ -365,8 +358,8 @@ export const CreateUser = () => {
               </div>
 
               {/* City */}
-              <div>
-                <label htmlFor="city" className="block text-xs font-semibold text-slate-700 mb-1.5">
+              <div className="w-full">
+                <label htmlFor="city" className="block w-full text-xs font-semibold text-slate-700 mb-1.5">
                   City
                 </label>
                 <input
@@ -383,10 +376,10 @@ export const CreateUser = () => {
           </div>
 
           {/* Form Actions */}
-          <div className="flex items-center justify-end gap-3 pt-6 border-t border-slate-100">
+          <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center sm:justify-end gap-3 pt-6 border-t border-slate-100">
             <Link
               to="/"
-              className="px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+              className="w-full sm:w-auto text-center px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
             >
               Cancel
             </Link>
@@ -394,7 +387,7 @@ export const CreateUser = () => {
               type="submit"
               id="submit-create-user-btn"
               disabled={isSubmitting}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 shadow-md shadow-indigo-600/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              className="w-full sm:w-auto justify-center inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 shadow-md shadow-indigo-600/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               {isSubmitting ? (
                 <>

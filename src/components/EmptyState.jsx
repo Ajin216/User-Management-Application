@@ -3,7 +3,7 @@ import { SearchX, UserX, RotateCcw } from 'lucide-react';
 
 export const EmptyState = ({ title = 'No users found', description = 'Try adjusting your search criteria or filters.', onReset }) => {
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/80 p-12 text-center max-w-lg mx-auto shadow-xs my-8">
+    <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-12 text-center max-w-lg mx-auto shadow-xs my-8">
       <div className="w-16 h-16 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center mx-auto text-indigo-600 mb-4 shadow-inner">
         <SearchX className="w-8 h-8" />
       </div>

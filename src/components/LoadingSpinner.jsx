@@ -18,7 +18,8 @@ export const LoadingSpinner = ({ text = 'Loading data...' }) => {
 
 export const TableSkeleton = ({ rows = 6 }) => {
   return (
-    <div className="w-full bg-white rounded-xl shadow-xs border border-slate-200 overflow-hidden divide-y divide-slate-100 animate-pulse">
+    <div className="w-full overflow-x-auto">
+      <div className="w-full min-w-[600px] md:min-w-full bg-white rounded-xl shadow-xs border border-slate-200 overflow-hidden divide-y divide-slate-100 animate-pulse">
       <div className="bg-slate-50 px-6 py-4 flex gap-4">
         <div className="h-4 bg-slate-200 rounded w-1/4"></div>
         <div className="h-4 bg-slate-200 rounded w-1/6"></div>
@@ -43,6 +44,7 @@ export const TableSkeleton = ({ rows = 6 }) => {
           </div>
         </div>
       ))}
+      </div>
     </div>
   );
 };

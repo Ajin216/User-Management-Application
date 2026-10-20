@@ -45,8 +45,94 @@ export const UserTable = ({
 
   return (
     <div className="w-full bg-white rounded-2xl shadow-xs border border-slate-200/80 overflow-hidden">
-      <div className="overflow-x-auto">
-        <table className="w-full text-left border-collapse">
+      {/* Option B: Mobile Card View Fallback (rendered on small screens, hidden on md+) */}
+      <div className="flex flex-col divide-y divide-slate-100 md:hidden">
+        {users.map((user) => {
+          const fullName = `${user.firstName} ${user.lastName}`;
+
+          return (
+            <div key={user.id} className="p-4 space-y-3">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-center gap-3 min-w-0">
+                  <UserAvatar src={user.image} name={fullName} size="md" />
+                  <div className="min-w-0">
+                    <Link
+                      to={`/user/${user.id}`}
+                      className="font-bold text-slate-900 hover:text-indigo-600 transition-colors text-sm truncate block"
+                    >
+                      {fullName}
+                    </Link>
+                    <p className="text-xs text-slate-400 font-mono">
+                      ID: #{user.id}
+                      {user.username ? ` • @${user.username}` : ''}
+                    </p>
+                  </div>
+                </div>
+                <div className="shrink-0 flex items-center gap-1.5">
+                  {getGenderBadge(user.gender)}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 text-xs text-slate-600 bg-slate-50/70 p-2.5 rounded-xl border border-slate-100">
+                <div>
+                  <span className="text-slate-400 block text-[11px]">Age</span>
+                  <span className="font-semibold text-slate-800">{user.age || '—'} yrs</span>
+                </div>
+                <div>
+                  <span className="text-slate-400 block text-[11px]">Company / Role</span>
+                  <span className="font-medium text-slate-700 truncate block">
+                    {user.company?.name || user.company?.title || user.role || '—'}
+                  </span>
+                </div>
+                <div className="col-span-2">
+                  <span className="text-slate-400 block text-[11px]">Email</span>
+                  <a
+                    href={`mailto:${user.email}`}
+                    className="inline-flex items-center gap-1.5 text-slate-700 hover:text-indigo-600 transition-colors truncate max-w-full"
+                  >
+                    <Mail className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <span className="truncate">{user.email}</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-end gap-1.5 pt-1">
+                <Link
+                  to={`/user/${user.id}`}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-semibold text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                  aria-label={`View ${fullName}`}
+                >
+                  <Eye className="w-3.5 h-3.5" />
+                  <span>View</span>
+                </Link>
+
+                <Link
+                  to={`/edit/${user.id}`}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-semibold text-amber-600 hover:bg-amber-50 rounded-lg transition-colors"
+                  aria-label={`Edit ${fullName}`}
+                >
+                  <Edit3 className="w-3.5 h-3.5" />
+                  <span>Edit</span>
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={() => onDeleteClick(user)}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-semibold text-rose-600 hover:bg-rose-50 rounded-lg transition-colors"
+                  aria-label={`Delete ${fullName}`}
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                  <span>Delete</span>
+                </button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Option A: Table wrapped in overflow-x-auto and w-full, hidden on mobile */}
+      <div className="overflow-x-auto w-full">
+        <table className="hidden md:table w-full text-left border-collapse">
           <thead>
             <tr className="bg-slate-50/80 border-b border-slate-200 text-xs font-bold text-slate-600 uppercase tracking-wider select-none">
               <th scope="col" className="py-4 px-6">
