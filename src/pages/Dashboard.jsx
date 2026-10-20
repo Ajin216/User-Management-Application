@@ -189,7 +189,7 @@ export const Dashboard = () => {
 
         <div className="bg-gradient-to-br from-indigo-600 to-indigo-700 rounded-2xl p-5 text-white shadow-md shadow-indigo-600/20 flex items-center justify-between">
           <div>
-            <p className="text-xs font-medium text-indigo-100 uppercase tracking-wider">Quick Action</p>
+
             <h3 className="text-lg font-bold mt-1">Add New User</h3>
 
           </div>
